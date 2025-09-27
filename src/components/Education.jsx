@@ -1,21 +1,22 @@
 import { useState } from "react";
 
 export default function Education() {
-  const [isEditing, setIsEditing]= useState(true);
-    const [school, setSchool] = useState("PENN");
+  const [isEditing, setIsEditing] = useState(true);
+  const [school, setSchool] = useState("PENN");
   const [degree, setPhone] = useState("Computer-Science");
-    const [startYear, setStartYear] = useState(2024);
-    const [endYear, setEndYear] = useState(2028);
+  const [startYear, setStartYear] = useState(2024);
+  const [endYear, setEndYear] = useState(2028);
 
   function handleSubmit(e) {
-  e.preventDefault(); 
-  setIsEditing(false);
-}
-function handleEdit() {
-  setIsEditing(true);
-}
+    e.preventDefault();
+    setIsEditing(false);
+  }
+  function handleEdit() {
+    setIsEditing(true);
+  }
 
-return (     <div>
+  return (
+    <div>
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <div>
@@ -37,7 +38,7 @@ return (     <div>
               onChange={(e) => setDegree(e.target.value)}
             />
           </div>
- <div>
+          <div>
             <label htmlFor="startYear">Start Year </label>
             <input
               type="number"
@@ -64,12 +65,18 @@ return (     <div>
         </form>
       ) : (
         <div>
-          <p><strong>School:</strong> {school}</p>
-          <p><strong>Degree:</strong> {degree}</p>
-          <p><strong>Date:</strong> {startYear} – {endYear}</p>
+          <p>
+            <strong>School:</strong> {school}
+          </p>
+          <p>
+            <strong>Degree:</strong> {degree}
+          </p>
+          <p>
+            <strong>Date:</strong> {startYear} – {endYear}
+          </p>
           <button onClick={handleEdit}>Edit</button>
         </div>
       )}
     </div>
-    );
+  );
 }

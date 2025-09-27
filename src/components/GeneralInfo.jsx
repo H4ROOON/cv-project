@@ -1,20 +1,20 @@
-import {useState} from "react";
+import { useState } from "react";
 export default function GeneralInfo() {
-
-  const [isEditing, setIsEditing]= useState(true);
-    const [name, setName] = useState("Haroon Adeel");
+  const [isEditing, setIsEditing] = useState(true);
+  const [name, setName] = useState("Haroon Adeel");
   const [phone, setPhone] = useState("0312-3456789");
   const [email, setEmail] = useState("yourname@haroon.com");
-      function handleSubmit(e) {
-  e.preventDefault(); 
-  setIsEditing(false);}
-  
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsEditing(false);
+  }
+
   function handleEdit() {
-  setIsEditing(true);
-}
-  
-  return(
-     <div>
+    setIsEditing(true);
+  }
+
+  return (
+    <div>
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <div>
@@ -51,13 +51,18 @@ export default function GeneralInfo() {
         </form>
       ) : (
         <div>
-          <p><strong>Name:</strong> {name}</p>
-          <p><strong>Phone:</strong> {phone}</p>
-          <p><strong>Email:</strong> {email}</p>
+          <p>
+            <strong>Name:</strong> {name}
+          </p>
+          <p>
+            <strong>Phone:</strong> {phone}
+          </p>
+          <p>
+            <strong>Email:</strong> {email}
+          </p>
           <button onClick={handleEdit}>Edit</button>
         </div>
       )}
     </div>
-    );
-
+  );
 }
