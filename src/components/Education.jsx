@@ -3,9 +3,9 @@ import { useState } from "react";
 export default function Education() {
   const [isEditing, setIsEditing] = useState(true);
   const [school, setSchool] = useState("PENN");
-  const [degree, setPhone] = useState("Computer-Science");
-  const [startYear, setStartYear] = useState(2024);
-  const [endYear, setEndYear] = useState(2028);
+  const [degree, setDegree] = useState("Computer-Science");
+  const [startYear, setStartYear] = useState("2024");
+  const [endYear, setEndYear] = useState("2028");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,65 +16,85 @@ export default function Education() {
   }
 
   return (
-    <div>
+    <div className="component education">
       {isEditing ? (
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="School">School </label>
+          <div className="form-row">
+            <label htmlFor="school">School</label>
             <input
+              id="school"
               type="text"
-              id="School"
               value={school}
               onChange={(e) => setSchool(e.target.value)}
             />
           </div>
 
-          <div>
-            <label htmlFor="Degree">Degree </label>
+          <div className="form-row">
+            <label htmlFor="degree">Degree</label>
             <input
+              id="degree"
               type="text"
-              id="Degree"
               value={degree}
               onChange={(e) => setDegree(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="startYear">Start Year </label>
+
+          <div className="form-row">
+            <label htmlFor="startYear">Start</label>
             <input
-              type="number"
               id="startYear"
+              type="text"
               value={startYear}
-              min="1900"
-              max="2100"
               onChange={(e) => setStartYear(e.target.value)}
             />
           </div>
 
-          <div>
-            <label htmlFor="endYear">End Year </label>
+          <div className="form-row">
+            <label htmlFor="endYear">End</label>
             <input
-              type="number"
               id="endYear"
+              type="text"
               value={endYear}
-              min={startYear}
-              max="2100"
               onChange={(e) => setEndYear(e.target.value)}
             />
           </div>
-          <button type="submit">Submit</button>
+
+          <div className="form-actions">
+            <div></div>
+            <div className="actions">
+              <button type="submit" className="btn primary">
+                Save
+              </button>
+            </div>
+          </div>
         </form>
       ) : (
         <div>
-          <p>
-            <strong>School:</strong> {school}
-          </p>
-          <p>
-            <strong>Degree:</strong> {degree}
-          </p>
-          <p>
-            <strong>Date:</strong> {startYear} – {endYear}
-          </p>
-          <button onClick={handleEdit}>Edit</button>
+          <div className="display-row">
+            <div className="label">School</div>
+            <div className="value">{school}</div>
+          </div>
+
+          <div className="display-row">
+            <div className="label">Degree</div>
+            <div className="value">{degree}</div>
+          </div>
+
+          <div className="display-row">
+            <div className="label">Date</div>
+            <div className="value">
+              {startYear} – {endYear}
+            </div>
+          </div>
+
+          <div className="form-actions">
+            <div></div>
+            <div className="actions">
+              <button className="btn" onClick={handleEdit}>
+                Edit
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

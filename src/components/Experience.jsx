@@ -2,48 +2,46 @@ import { useState } from "react";
 
 export default function Experience() {
   const [isEditing, setIsEditing] = useState(true);
-
   const [title, setTitle] = useState("Frontend Developer");
   const [company, setCompany] = useState("Google");
   const [description, setDescription] = useState("Worked on building UI.");
-  const [startYear, setStartYear] = useState(2025);
+  const [startYear, setStartYear] = useState("2025");
   const [endYear, setEndYear] = useState("Present");
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsEditing(false);
   }
-
   function handleEdit() {
     setIsEditing(true);
   }
 
   return (
-    <div>
+    <div className="component experience">
       {isEditing ? (
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="title">Job Title </label>
+          <div className="form-row">
+            <label htmlFor="title">Job Title</label>
             <input
-              type="text"
               id="title"
+              type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
-          <div>
-            <label htmlFor="company">Company </label>
+          <div className="form-row">
+            <label htmlFor="company">Company</label>
             <input
-              type="text"
               id="company"
+              type="text"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
             />
           </div>
 
-          <div>
-            <label htmlFor="description">Description </label>
+          <div className="form-row">
+            <label htmlFor="description">Description</label>
             <textarea
               id="description"
               value={description}
@@ -51,46 +49,67 @@ export default function Experience() {
             />
           </div>
 
-          <div>
-            <label htmlFor="startYear">Start Year </label>
+          <div className="form-row">
+            <label htmlFor="startYear">Start</label>
             <input
-              type="number"
               id="startYear"
+              type="text"
               value={startYear}
-              min="1900"
-              max="2100"
-              onChange={(e) => setStartYear(Number(e.target.value))}
+              onChange={(e) => setStartYear(e.target.value)}
             />
           </div>
 
-          <div>
-            <label htmlFor="endYear">End Year </label>
+          <div className="form-row">
+            <label htmlFor="endYear">End</label>
             <input
-              type="text"
               id="endYear"
+              type="text"
               value={endYear}
               onChange={(e) => setEndYear(e.target.value)}
-              placeholder="e.g. 2028 or Present"
             />
           </div>
 
-          <button type="submit">Submit</button>
+          <div className="form-actions">
+            <div></div>
+            <div className="actions">
+              <button type="submit" className="btn primary">
+                Save
+              </button>
+            </div>
+          </div>
         </form>
       ) : (
         <div>
-          <p>
-            <strong>Title:</strong> {title}
-          </p>
-          <p>
-            <strong>Company:</strong> {company}
-          </p>
-          <p>
-            <strong>Description:</strong> {description}
-          </p>
-          <p>
-            <strong>Duration:</strong> {startYear} – {endYear}
-          </p>
-          <button onClick={handleEdit}>Edit</button>
+          <div className="display-row">
+            <div className="label">Title</div>
+            <div className="value">{title}</div>
+          </div>
+
+          <div className="display-row">
+            <div className="label">Company</div>
+            <div className="value">{company}</div>
+          </div>
+
+          <div className="display-row">
+            <div className="label">Description</div>
+            <div className="value">{description}</div>
+          </div>
+
+          <div className="display-row">
+            <div className="label">Duration</div>
+            <div className="value">
+              {startYear} – {endYear}
+            </div>
+          </div>
+
+          <div className="form-actions">
+            <div></div>
+            <div className="actions">
+              <button className="btn" onClick={handleEdit}>
+                Edit
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
