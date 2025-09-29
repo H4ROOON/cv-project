@@ -183,3 +183,41 @@ textarea {
     justify-self: stretch;
   }
 }
+@media print {
+  .btn,
+  .actions,
+  .app {
+    display: none !important;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .cv-page {
+    width: 100%;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  .cv-header h1 {
+    font-size: 24pt;
+  }
+
+  .cv-header p.sub {
+    font-size: 14pt;
+  }
+
+  .section h2 {
+    font-size: 18pt;
+    margin-bottom: 8px;
+  }
+
+  .section-content {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+}
